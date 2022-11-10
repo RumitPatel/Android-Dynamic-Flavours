@@ -1,5 +1,5 @@
 # android-dynamic-flavours
-This describes how to share single code to multiple projecs.
+Create and maintain multiple android flavours dynamically with just one json file.
 
 You can test it by below gradle commands:
 
