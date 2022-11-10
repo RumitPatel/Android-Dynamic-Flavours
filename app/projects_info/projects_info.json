@@ -1,0 +1,37 @@
+{
+  "projectsInfoJSONArray": [
+    {
+      "projectVariantName": "project1",
+      "versionCode": 1,
+      "versionName": "1.0",
+      "applicationId": "com.project1",
+      "storeFile": "keystores/MyKeyStore1.jks",
+      "storePassword": "yourStorePassword",
+      "keyAlias": "yourKeyAlias",
+      "keyPassword": "yourKeyPassword",
+      "isLive": 1
+    },
+    {
+      "projectVariantName": "project2",
+      "versionCode": 2,
+      "versionName": "1.2",
+      "applicationId": "com.project2",
+      "storeFile": "keystores/MyKeyStore2.jks",
+      "storePassword": "yourStorePassword",
+      "keyAlias": "yourKeyAlias",
+      "keyPassword": "yourKeyPassword",
+      "isLive": 1
+    },
+    {
+      "projectVariantName": "project3",
+      "versionCode": 3,
+      "versionName": "1.3",
+      "applicationId": "com.project3",
+      "storeFile": "keystores/MyKeyStore3.jks",
+      "storePassword": "yourStorePassword",
+      "keyAlias": "yourKeyAlias",
+      "keyPassword": "yourKeyPassword",
+      "isLive": 0
+    }
+  ]
+}

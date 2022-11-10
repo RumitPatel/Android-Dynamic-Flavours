@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -15,6 +17,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        flavorDimensions "project"
     }
 
     buildTypes {
@@ -40,7 +44,31 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+}
+
+def applicationDefinitions = []
+
+def projectsInfoFile = file('projects_info/projects_info.json')
+def projectsInfoJSON = new JsonSlurper().parseText(projectsInfoFile.text)
+def projectsInfoArray = projectsInfoJSON.projectsInfoJSONArray
+def projectsInfoMap = [:]
+projectsInfoArray.each { projectInfo ->
+    projectsInfoMap[projectInfo.projectVariantName] = projectInfo
+
+    applicationDefinitions.add(['name': projectInfo.projectVariantName, 'applicationId': projectInfo.applicationId])
+}
+
+applicationDefinitions.each { applicationDefinition ->
+    def signingConfig = projectsInfoMap[applicationDefinition['name']]
+    if (signingConfig.isLive == 1) android.productFlavors.create(applicationDefinition['name'], { flavor ->
+        flavor.applicationId = applicationDefinition['applicationId']
+        flavor.versionCode = signingConfig.versionCode
+        flavor.versionName = signingConfig.versionName
+
+        flavor.signingConfig = android.signingConfigs.create(applicationDefinition['name'])
+        flavor.signingConfig.storeFile = file(signingConfig.storeFile)
+        flavor.signingConfig.storePassword = signingConfig.storePassword
+        flavor.signingConfig.keyAlias = signingConfig.keyAlias
+        flavor.signingConfig.keyPassword = signingConfig.keyPassword
+    }) else println "===> " + signingConfig.projectVariantName + " is Not LIVE. Excluding it from build."
 }
