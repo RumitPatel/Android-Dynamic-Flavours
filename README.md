@@ -1,7 +1,7 @@
 # android-dynamic-flavours
-Create and maintain multiple android flavours dynamically with just one json file.
+You can create and maintain multiple android flavours dynamically with just one json file.
 
-You can test it by below gradle commands:
+You can test it by installing this sample app and applying below gradle commands:
 
 **Install variants of Project1 flavor:**
 ```
