@@ -1,6 +1,11 @@
 # android-dynamic-flavours
 You can create and maintain multiple android flavours dynamically with just one json file. You can test it by installing this sample app and applying below gradle commands:
 
+**Check all possible gradle task:** It'll list all the possible gradle  tasks.
+```
+$ ./gradlew task
+```
+
 **Install flavors:** It'll install app on connected device.
 ```
 $ ./gradlew installproject1debug
