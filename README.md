@@ -7,6 +7,7 @@ $ ./gradlew task
 ```
 
 **Install flavors:** It'll install app on connected device.
+Examples:
 ```
 $ ./gradlew installproject1debug
 $ ./gradlew installproject1release
