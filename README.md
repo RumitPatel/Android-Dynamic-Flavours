@@ -7,6 +7,7 @@ $ ./gradlew task
 ```
 
 **Install flavors:** It'll install app on connected device.
+
 Examples:
 ```
 $ ./gradlew installproject1debug
@@ -18,6 +19,8 @@ $ ./gradlew installproject2release
 
 **Assemble flavors:** It'll assemble and prepare .apk file in `app/build/outputs/apk/YOUR_FLAVOR_NAME/debug/app-YOUR_FLAVOR_NAME-debug.apk`
 ```
+
+Examples:
 $ ./gradlew assembleproject1debug
 $ ./gradlew assembleproject1release
 
@@ -28,6 +31,8 @@ $ ./gradlew assembleproject2release
 
 **Bundle flavors:** It'll prepare .aab file in `app/build/outputs/bundle/YOUR_FLAVOR_NAME/release/app-YOUR_FLAVOR_NAME-release.aab`
 ```
+
+Examples:
 $ ./gradlew assembleproject1debug
 $ ./gradlew assembleproject1release
 
