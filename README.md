@@ -49,3 +49,8 @@ $ ./gradlew assembleproject1release
 $ ./gradlew assembleproject2debug
 $ ./gradlew assembleproject2release
 ```
+- - - 
+
+# Credits
+
+Third party libraries: [JsonSlurper](https://groovy-lang.org/processing-json.html#json_jsonslurper).
