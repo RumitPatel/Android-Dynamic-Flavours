@@ -1,6 +1,16 @@
 # android-dynamic-flavours
 You can create and maintain multiple android flavours dynamically with just one json file. You can test it by installing this sample app and applying below gradle commands:
 
+Step 1: Create `keystores` and `projects_info` folders inside `app` folder.
+
+Step 2: Put projects_info.json file inside `projects_info` folder which contains all the information regarding all the flavours.
+
+Step 3: Put keystore file(s) in `keystores` folder. And sync the gradle.
+
+Step 4: Create folders respected to each flavours inside `src` folder.
+
+**Thats it.** Lets test it out:
+
 **Check all possible gradle task:** It'll list all the possible gradle  tasks.
 ```
 $ ./gradlew task
