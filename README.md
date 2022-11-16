@@ -49,6 +49,14 @@ $ ./gradlew assembleproject1release
 $ ./gradlew assembleproject2debug
 $ ./gradlew assembleproject2release
 ```
+
+
+**Uninstall flavors:** It'll uninstall all the installed projects related to all the flavours.
+
+Examples:
+```
+$ ./gradlew uninstallAll
+```
 - - - 
 
 # Credits
