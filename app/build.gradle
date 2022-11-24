@@ -64,6 +64,7 @@ applicationDefinitions.each { applicationDefinition ->
         flavor.applicationId = applicationDefinition['applicationId']
         flavor.versionCode = signingConfig.versionCode
         flavor.versionName = signingConfig.versionName
+//        setProperty("archivesBaseName", "${applicationDefinition['applicationId']}-v${signingConfig.versionCode}")
 
         flavor.signingConfig = android.signingConfigs.create(applicationDefinition['name'])
         flavor.signingConfig.storeFile = file(signingConfig.storeFile)
