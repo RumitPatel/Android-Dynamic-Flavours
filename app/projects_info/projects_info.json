@@ -16,10 +16,10 @@
       "versionCode": 2,
       "versionName": "1.2",
       "applicationId": "com.project2",
-      "storeFile": "keystores/P1KeyStore.jks",
-      "storePassword": "P1KeyStore",
-      "keyAlias": "P1KeyStore",
-      "keyPassword": "P1KeyStore",
+      "storeFile": "keystores/P2KeyStore.jks",
+      "storePassword": "P2KeyStore",
+      "keyAlias": "P2KeyStore",
+      "keyPassword": "P2KeyStore",
       "isLive": 1
     },
     {
