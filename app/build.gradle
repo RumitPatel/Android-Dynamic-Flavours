@@ -62,8 +62,7 @@ applicationDefinitions.each { applicationDefinition ->
     Gradle gradle = getGradle()
     def taskReqStr = gradle.getStartParameter().getTaskRequests()
     def signingConfig = projectsInfoMap[applicationDefinition['name']]
-
-    String input= taskReqStr.args.toString().replace("[[","").replace("]]","").replace("assemble","").replace("Debug","")
+    String input= taskReqStr.args.toString().replace("[[","").replace("]]","").replace("assemble","").replace("Debug","").replace("bundle","").replace("release","")
 
     if (signingConfig.isLive == 1 && input.equalsIgnoreCase(signingConfig.projectVariantName)) android.productFlavors.create(applicationDefinition['name'], { flavor ->
         flavor.applicationId = applicationDefinition['applicationId']
