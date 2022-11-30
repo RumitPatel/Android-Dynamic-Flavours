@@ -63,17 +63,36 @@ applicationDefinitions.each { applicationDefinition ->
     def taskReqStr = gradle.getStartParameter().getTaskRequests()
     def signingConfig = projectsInfoMap[applicationDefinition['name']]
     String input= taskReqStr.args.toString().replace("[[","").replace("]]","").replace("assemble","").replace("Debug","").replace("bundle","").replace("release","")
+    println "==>"+input.toString()
 
-    if (signingConfig.isLive == 1 && input.equalsIgnoreCase(signingConfig.projectVariantName)) android.productFlavors.create(applicationDefinition['name'], { flavor ->
-        flavor.applicationId = applicationDefinition['applicationId']
-        flavor.versionCode = signingConfig.versionCode
-        flavor.versionName = signingConfig.versionName
-        setProperty("archivesBaseName", "${applicationDefinition['applicationId']}-v${signingConfig.versionCode}")
+    if(input.toString().equalsIgnoreCase(""))
+        if (signingConfig.isLive == 1) android.productFlavors.create(applicationDefinition['name'], { flavor ->
+            flavor.applicationId = applicationDefinition['applicationId']
+            flavor.versionCode = signingConfig.versionCode
+            flavor.versionName = signingConfig.versionName
+            setProperty("archivesBaseName", "${applicationDefinition['applicationId']}-v${signingConfig.versionCode}")
 
-        flavor.signingConfig = android.signingConfigs.create(applicationDefinition['name'])
-        flavor.signingConfig.storeFile = file(signingConfig.storeFile)
-        flavor.signingConfig.storePassword = signingConfig.storePassword
-        flavor.signingConfig.keyAlias = signingConfig.keyAlias
-        flavor.signingConfig.keyPassword = signingConfig.keyPassword
-    }) else println "===> " + signingConfig.projectVariantName + " is Not LIVE. Excluding it from build."
+            flavor.signingConfig = android.signingConfigs.create(applicationDefinition['name'])
+            flavor.signingConfig.storeFile = file(signingConfig.storeFile)
+            flavor.signingConfig.storePassword = signingConfig.storePassword
+            flavor.signingConfig.keyAlias = signingConfig.keyAlias
+            flavor.signingConfig.keyPassword = signingConfig.keyPassword
+        }) else println "===> " + signingConfig.projectVariantName + " is Not LIVE. Excluding it from build."
+    else
+        if (signingConfig.isLive == 1 && input.equalsIgnoreCase(signingConfig.projectVariantName)) android.productFlavors.create(applicationDefinition['name'], { flavor ->
+            flavor.applicationId = applicationDefinition['applicationId']
+            flavor.versionCode = signingConfig.versionCode
+            flavor.versionName = signingConfig.versionName
+            setProperty("archivesBaseName", "${applicationDefinition['applicationId']}-v${signingConfig.versionCode}")
+
+            flavor.signingConfig = android.signingConfigs.create(applicationDefinition['name'])
+            flavor.signingConfig.storeFile = file(signingConfig.storeFile)
+            flavor.signingConfig.storePassword = signingConfig.storePassword
+            flavor.signingConfig.keyAlias = signingConfig.keyAlias
+            flavor.signingConfig.keyPassword = signingConfig.keyPassword
+        }) else println "===> " + signingConfig.projectVariantName + " is Not LIVE. Excluding it from build."
+
+
+
+
 }
